@@ -6,7 +6,7 @@ Scripts para abrir los espacios de trabajo de desarrollo de ASISA desde Windows.
 
 - Windows con PowerShell.
 - Windows Terminal (`wt.exe`), Visual Studio Code (`code`) y aXet.code (`axet-code.exe`) disponibles en `PATH` para el perfil de integración.
-- Git Bash instalado en `C:\Users\jgamezpo\AppData\Local\Programs\Git\git-bash.exe` para el perfil de ronda principal.
+- Git Bash instalado en `C:\Users\jgamezpo\AppData\Local\Programs\Git\git-bash.exe` para los perfiles Proyecto Arranque y ronda principal.
 - Los repositorios y directorios definidos en los scripts deben existir en las rutas configuradas.
 
 ## Uso
@@ -19,12 +19,14 @@ Desde PowerShell, en la carpeta de este proyecto:
 
 Se mostrará un menú con estos perfiles:
 
-1. **Integración de desarrollos**: abre una pestaña de Windows Terminal con aXet.code para cada entorno configurado. También abre en VS Code los entornos marcados para ello.
-2. **Ronda principal**: inicia Git Bash, que ejecuta `start-ronda-principal.sh` para abrir tres ventanas de VS Code: el proyecto principal, el frontend y el backend.
+1. **Proyecto Arranque**: inicia Git Bash, que ejecuta `start-arranque.sh` para abrir esta carpeta en una nueva ventana de VS Code.
+2. **Integración de desarrollos**: abre una pestaña de Windows Terminal con aXet.code para cada entorno configurado. También abre en VS Code los entornos marcados para ello.
+3. **Ronda principal**: inicia Git Bash, que ejecuta `start-ronda-principal.sh` para abrir tres ventanas de VS Code: el proyecto principal, el frontend y el backend.
 
 También se puede elegir el perfil directamente:
 
 ```powershell
+.\start-environment.ps1 -Profile arranque
 .\start-environment.ps1 -Profile integration
 .\start-environment.ps1 -Profile ronda-principal
 ```
@@ -38,9 +40,9 @@ El perfil de integración usa directorios bajo `C:\dev\modernizacion\Asisa\infor
 - `documentacion\DocumentacionInterna`
 - `BaremoJava\Baremo`
 
-El perfil de ronda principal abre directorios bajo `C:\dev\modernizacion\Asisa\Ronda\Principal`, incluyendo el proyecto principal, `Frontend\Asisa.Ronda.Frontend` y `Backend`.
+El perfil Proyecto Arranque abre la carpeta que contiene este proyecto. El perfil de ronda principal abre directorios bajo `C:\dev\modernizacion\Asisa\Ronda\Principal`, incluyendo el proyecto principal, `Frontend\Asisa.Ronda.Frontend` y `Backend`.
 
-Si los repositorios están en otra ubicación, actualiza las rutas en `start-environment.ps1` y `start-ronda-principal.sh` antes de ejecutar los scripts. El perfil de ronda principal también espera encontrar Git Bash en la ruta indicada en la sección de requisitos.
+Si los repositorios están en otra ubicación, actualiza las rutas en `start-environment.ps1` y `start-ronda-principal.sh` antes de ejecutar los scripts. Proyecto Arranque determina su carpeta a partir de la ubicación de `start-arranque.sh`. Los perfiles que usan Git Bash esperan encontrarlo en la ruta indicada en la sección de requisitos.
 
 ## Errores y validaciones
 

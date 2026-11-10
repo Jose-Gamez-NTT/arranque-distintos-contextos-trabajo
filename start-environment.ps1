@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('integration', 'ronda-principal')]
+    [ValidateSet('arranque', 'integration', 'ronda-principal')]
     [string]$Profile
 )
 
@@ -131,22 +131,41 @@ function Start-RondaPrincipal {
     Start-Process -FilePath $gitBashPath -ArgumentList @('--cd-to-home', '-c', '"bash /c/dev/Arranque/start-ronda-principal.sh"')
 }
 
+function Start-Arranque {
+    $gitBashPath = 'C:\Users\jgamezpo\AppData\Local\Programs\Git\git-bash.exe'
+    $launcherPath = Join-Path $PSScriptRoot 'start-arranque.sh'
+
+    if (-not (Test-Path -LiteralPath $gitBashPath -PathType Leaf)) {
+        throw "No se encontro Git Bash: $gitBashPath"
+    }
+
+    if (-not (Test-Path -LiteralPath $launcherPath -PathType Leaf)) {
+        throw "No se encontro el script de arranque: $launcherPath"
+    }
+
+    $bashLauncherPath = $launcherPath -replace '^([A-Za-z]):\\', '/$1/'
+    $bashLauncherPath = $bashLauncherPath.Replace('\', '/')
+    Start-Process -FilePath $gitBashPath -ArgumentList @('--cd-to-home', '-c', "`"bash $bashLauncherPath`"")
+}
+
 function Show-ProfileMenu {
     Clear-Host
     Write-Host '========================================'
     Write-Host ' Entorno ASISA - Informes Jasper'
     Write-Host '========================================'
     Write-Host ''
-    Write-Host '1. Integracion de desarrollos'
-    Write-Host '2. Ronda principal'
+    Write-Host '1. Proyecto Arranque'
+    Write-Host '2. Integracion de desarrollos'
+    Write-Host '3. Ronda principal'
     Write-Host '0. Salir'
     Write-Host ''
 
     switch (Read-Host 'Seleccione perfil') {
-        '1' { return 'integration' }
-        '2' { return 'ronda-principal' }
+        '1' { return 'arranque' }
+        '2' { return 'integration' }
+        '3' { return 'ronda-principal' }
         '0' { return $null }
-        default { throw 'Seleccion no valida. Use 0, 1 o 2.' }
+        default { throw 'Seleccion no valida. Use 0, 1, 2 o 3.' }
     }
 }
 
@@ -156,6 +175,7 @@ try {
     }
 
     switch ($Profile) {
+        'arranque' { Start-Arranque }
         'integration' { Start-IntegrationProfile }
         'ronda-principal' { Start-RondaPrincipal }
         $null { }
