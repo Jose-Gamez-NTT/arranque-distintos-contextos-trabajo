@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('arranque', 'integration', 'ronda-principal')]
+    [ValidateSet('arranque', 'integration', 'ronda-principal', 'suite-mis-programas-html-en-local')]
     [string]$Profile
 )
 
@@ -131,9 +131,14 @@ function Start-RondaPrincipal {
     Start-Process -FilePath $gitBashPath -ArgumentList @('--cd-to-home', '-c', '"bash /c/dev/Arranque/start-ronda-principal.sh"')
 }
 
-function Start-Arranque {
+function Start-ShellLauncher {
+    param(
+        [Parameter(Mandatory)]
+        [string]$LauncherName
+    )
+
     $gitBashPath = 'C:\Users\jgamezpo\AppData\Local\Programs\Git\git-bash.exe'
-    $launcherPath = Join-Path $PSScriptRoot 'start-arranque.sh'
+    $launcherPath = Join-Path $PSScriptRoot $LauncherName
 
     if (-not (Test-Path -LiteralPath $gitBashPath -PathType Leaf)) {
         throw "No se encontro Git Bash: $gitBashPath"
@@ -148,6 +153,14 @@ function Start-Arranque {
     Start-Process -FilePath $gitBashPath -ArgumentList @('--cd-to-home', '-c', "`"bash $bashLauncherPath`"")
 }
 
+function Start-Arranque {
+    Start-ShellLauncher -LauncherName 'start-arranque.sh'
+}
+
+function Start-SuiteMisProgramas {
+    Start-ShellLauncher -LauncherName 'start-suite-mis-programas-html-en-local.sh'
+}
+
 function Show-ProfileMenu {
     Clear-Host
     Write-Host '========================================'
@@ -157,6 +170,7 @@ function Show-ProfileMenu {
     Write-Host '1. Proyecto Arranque'
     Write-Host '2. Integracion de desarrollos'
     Write-Host '3. Ronda principal'
+    Write-Host '4. Suite mis programas HTML en local'
     Write-Host '0. Salir'
     Write-Host ''
 
@@ -164,8 +178,9 @@ function Show-ProfileMenu {
         '1' { return 'arranque' }
         '2' { return 'integration' }
         '3' { return 'ronda-principal' }
+        '4' { return 'suite-mis-programas-html-en-local' }
         '0' { return $null }
-        default { throw 'Seleccion no valida. Use 0, 1, 2 o 3.' }
+        default { throw 'Seleccion no valida. Use 0, 1, 2, 3 o 4.' }
     }
 }
 
@@ -178,6 +193,7 @@ try {
         'arranque' { Start-Arranque }
         'integration' { Start-IntegrationProfile }
         'ronda-principal' { Start-RondaPrincipal }
+        'suite-mis-programas-html-en-local' { Start-SuiteMisProgramas }
         $null { }
     }
 }
