@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('arranque', 'integration', 'ronda-principal', 'suite-mis-programas-html-en-local')]
+    [ValidateSet('arranque', 'integration', 'ronda-principal', 'suite-mis-programas-html-en-local', 'tests-informes-jasper')]
     [string]$Profile
 )
 
@@ -161,6 +161,10 @@ function Start-SuiteMisProgramas {
     Start-ShellLauncher -LauncherName 'start-suite-mis-programas-html-en-local.sh'
 }
 
+function Start-TestsInformesJasper {
+    Start-ShellLauncher -LauncherName 'start-tests-informes-jasper.sh'
+}
+
 function Show-ProfileMenu {
     Clear-Host
     Write-Host '========================================'
@@ -171,6 +175,7 @@ function Show-ProfileMenu {
     Write-Host '2. integracion desarrollos jasper'
     Write-Host '3. Ronda principal'
     Write-Host '4. Suite mis programas HTML en local'
+    Write-Host '5. Tests informes Jasper'
     Write-Host '0. Salir'
     Write-Host ''
 
@@ -179,8 +184,9 @@ function Show-ProfileMenu {
         '2' { return 'integration' }
         '3' { return 'ronda-principal' }
         '4' { return 'suite-mis-programas-html-en-local' }
+        '5' { return 'tests-informes-jasper' }
         '0' { return $null }
-        default { throw 'Seleccion no valida. Use 0, 1, 2, 3 o 4.' }
+        default { throw 'Seleccion no valida. Use 0, 1, 2, 3, 4 o 5.' }
     }
 }
 
@@ -194,6 +200,7 @@ try {
         'integration' { Start-IntegrationProfile }
         'ronda-principal' { Start-RondaPrincipal }
         'suite-mis-programas-html-en-local' { Start-SuiteMisProgramas }
+        'tests-informes-jasper' { Start-TestsInformesJasper }
         $null { }
     }
 }
