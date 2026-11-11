@@ -20,7 +20,7 @@ Desde PowerShell, en la carpeta de este proyecto:
 Se mostrará un menú con estos perfiles:
 
 1. **Proyecto Arranque**: inicia Git Bash, que ejecuta `start-arranque.sh` para abrir esta carpeta en una nueva ventana de VS Code.
-2. **Integración de desarrollos**: abre una pestaña de Windows Terminal con aXet.code para cada entorno configurado. También abre en VS Code los entornos marcados para ello.
+2. **integracion desarrollos jasper**: abre una pestaña de Windows Terminal con aXet.code para cada entorno configurado. También abre en VS Code los entornos marcados para ello.
 3. **Ronda principal**: inicia Git Bash, que ejecuta `start-ronda-principal.sh` para abrir tres ventanas de VS Code: el proyecto principal, el frontend y el backend.
 
 También se puede elegir el perfil directamente:
