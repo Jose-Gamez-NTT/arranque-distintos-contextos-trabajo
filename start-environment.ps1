@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('arranque', 'integration', 'ronda-principal', 'suite-mis-programas-html-en-local', 'tests-informes-jasper')]
+    [ValidateSet('arranque', 'integration', 'ronda-principal', 'seguridad-de-ronda', 'suite-mis-programas-html-en-local', 'tests-informes-jasper')]
     [string]$Profile
 )
 
@@ -165,6 +165,10 @@ function Start-TestsInformesJasper {
     Start-ShellLauncher -LauncherName 'start-tests-informes-jasper.sh'
 }
 
+function Start-SeguridadDeRonda {
+    Start-ShellLauncher -LauncherName 'start-seguridad-de-ronda.sh'
+}
+
 function Show-ProfileMenu {
     Clear-Host
     Write-Host '========================================'
@@ -174,8 +178,9 @@ function Show-ProfileMenu {
     Write-Host '1. Proyecto Arranque'
     Write-Host '2. integracion desarrollos jasper'
     Write-Host '3. Ronda principal'
-    Write-Host '4. Suite mis programas HTML en local'
-    Write-Host '5. Tests informes Jasper'
+    Write-Host '4. Seguridad de ronda'
+    Write-Host '5. Suite mis programas HTML en local'
+    Write-Host '6. Tests informes Jasper'
     Write-Host '0. Salir'
     Write-Host ''
 
@@ -183,10 +188,11 @@ function Show-ProfileMenu {
         '1' { return 'arranque' }
         '2' { return 'integration' }
         '3' { return 'ronda-principal' }
-        '4' { return 'suite-mis-programas-html-en-local' }
-        '5' { return 'tests-informes-jasper' }
+        '4' { return 'seguridad-de-ronda' }
+        '5' { return 'suite-mis-programas-html-en-local' }
+        '6' { return 'tests-informes-jasper' }
         '0' { return $null }
-        default { throw 'Seleccion no valida. Use 0, 1, 2, 3, 4 o 5.' }
+        default { throw 'Seleccion no valida. Use 0, 1, 2, 3, 4, 5 o 6.' }
     }
 }
 
@@ -199,6 +205,7 @@ try {
         'arranque' { Start-Arranque }
         'integration' { Start-IntegrationProfile }
         'ronda-principal' { Start-RondaPrincipal }
+        'seguridad-de-ronda' { Start-SeguridadDeRonda }
         'suite-mis-programas-html-en-local' { Start-SuiteMisProgramas }
         'tests-informes-jasper' { Start-TestsInformesJasper }
         $null { }
