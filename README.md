@@ -25,6 +25,7 @@ Se mostrará un menú con estos perfiles:
 4. **Seguridad de ronda**: inicia Git Bash, que ejecuta `start-seguridad-de-ronda.sh` para abrir tres ventanas de VS Code: el proyecto, el frontend y el backend de Seguridad.
 5. **Suite mis programas HTML en local**: inicia Git Bash y ejecuta `start-suite-mis-programas-html-en-local.sh` para abrir la suite configurada en una nueva ventana de VS Code.
 6. **Tests informes Jasper**: inicia Git Bash y ejecuta `start-tests-informes-jasper.sh` para abrir `C:\dev\modernizacion\Asisa\informesJasper\MigracionInformesJasper` en una nueva ventana de VS Code.
+7. **Bonificación Seguridad Social**: inicia Git Bash y ejecuta `start-bonificacion-seguridad-social.sh` para abrir `C:\dev\BoniSS` en una nueva ventana de VS Code.
 
 También se puede elegir el perfil directamente:
 
@@ -35,6 +36,7 @@ También se puede elegir el perfil directamente:
 .\start-environment.ps1 -Profile seguridad-de-ronda
 .\start-environment.ps1 -Profile suite-mis-programas-html-en-local
 .\start-environment.ps1 -Profile tests-informes-jasper
+.\start-environment.ps1 -Profile bonificacion-seguridad-social
 ```
 
 ## Rutas configuradas
