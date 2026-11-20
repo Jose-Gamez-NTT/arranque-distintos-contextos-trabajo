@@ -22,7 +22,7 @@ $integrationEnvironments = @(
     },
     [pscustomobject]@{
         Name          = 'Baremo Java'
-        Path          = 'C:\dev\modernizacion\Asisa\informesJasper\Implantaciones\BaremoJava\Baremo'
+        Path          = 'C:\dev\modernizacion\Asisa\informesJasper\Implantaciones\polizas\Polizas'
         OpenInVSCode  = $true
     }
 )
@@ -113,7 +113,7 @@ function Start-DevelopmentEnvironment {
 }
 
 function Start-IntegrationProfile {
-    Start-DevelopmentEnvironment -Environments $integrationEnvironments
+    Start-ShellLauncher -LauncherName 'start-integracion-desarrollos-jasper.sh'
 }
 
 function Start-RondaPrincipal {
@@ -185,7 +185,7 @@ function Show-ProfileMenu {
     Write-Host '4. Seguridad de ronda'
     Write-Host '5. Suite mis programas HTML en local'
     Write-Host '6. Tests informes Jasper'
-    Write-Host '7. Bonificación Seguridad Social'
+    Write-Host '7. Bonificacion Seguridad Social'
     Write-Host '0. Salir'
     Write-Host ''
 
