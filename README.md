@@ -26,6 +26,7 @@ Se mostrará un menú con estos perfiles:
 5. **Suite mis programas HTML en local**: inicia Git Bash y ejecuta `start-suite-mis-programas-html-en-local.sh` para abrir la suite configurada en una nueva ventana de VS Code.
 6. **Tests informes Jasper**: inicia Git Bash y ejecuta `start-tests-informes-jasper.sh` para abrir `C:\dev\modernizacion\Asisa\informesJasper\MigracionInformesJasper` en una nueva ventana de VS Code.
 7. **Bonificación Seguridad Social**: inicia Git Bash y ejecuta `start-bonificacion-seguridad-social.sh` para abrir `C:\dev\BoniSS` en una nueva ventana de VS Code.
+8. **boton desahogo**: inicia Git Bash y ejecuta `start-boton-desahogo.sh` para abrir `C:\dev\misReposGithubNTT\boton-desahogo` en una nueva ventana de VS Code.
 
 También se puede elegir el perfil directamente:
 
@@ -37,6 +38,7 @@ También se puede elegir el perfil directamente:
 .\start-environment.ps1 -Profile suite-mis-programas-html-en-local
 .\start-environment.ps1 -Profile tests-informes-jasper
 .\start-environment.ps1 -Profile bonificacion-seguridad-social
+.\start-environment.ps1 -Profile boton-desahogo
 ```
 
 ## Rutas configuradas
@@ -48,7 +50,7 @@ El launcher de integración Jasper abre en ventanas separadas de VS Code:
 - `documentacion\DocumentacionInterna`
 - `polizas\Polizas` (código Java de Pólizas)
 
-El perfil Proyecto Arranque abre la carpeta que contiene este proyecto. El perfil de ronda principal abre directorios bajo `C:\dev\modernizacion\Asisa\Ronda\Principal`, incluyendo el proyecto principal, `Frontend\Asisa.Ronda.Frontend` y `Backend`. El perfil de Seguridad de ronda abre `C:\dev\modernizacion\Asisa\Ronda\Seguridad` y sus carpetas `projects\ASISA\ModernizacionSeguridad\ModernizedApp\Frontend\qi-security-spa` y `projects\ASISA\ModernizacionSeguridad\ModernizedApp\Backend`. El perfil de tests de informes Jasper abre `C:\dev\modernizacion\Asisa\informesJasper\MigracionInformesJasper`.
+El perfil Proyecto Arranque abre la carpeta que contiene este proyecto. El perfil de ronda principal abre directorios bajo `C:\dev\modernizacion\Asisa\Ronda\Principal`, incluyendo el proyecto principal, `Frontend\Asisa.Ronda.Frontend` y `Backend`. El perfil de Seguridad de ronda abre `C:\dev\modernizacion\Asisa\Ronda\Seguridad` y sus carpetas `projects\ASISA\ModernizacionSeguridad\ModernizedApp\Frontend\qi-security-spa` y `projects\ASISA\ModernizacionSeguridad\ModernizedApp\Backend`. El perfil de tests de informes Jasper abre `C:\dev\modernizacion\Asisa\informesJasper\MigracionInformesJasper`. El perfil **boton desahogo** abre `C:\dev\misReposGithubNTT\boton-desahogo`.
 
 Si los repositorios están en otra ubicación, actualiza las rutas en `start-environment.ps1` y en el launcher correspondiente (`start-ronda-principal.sh` o `start-seguridad-de-ronda.sh`) antes de ejecutar los scripts. Proyecto Arranque determina su carpeta a partir de la ubicación de `start-arranque.sh`. Los perfiles que usan Git Bash esperan encontrarlo en la ruta indicada en la sección de requisitos.
 
