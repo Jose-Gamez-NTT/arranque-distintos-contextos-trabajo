@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('arranque', 'integration', 'ronda-principal', 'seguridad-de-ronda', 'suite-mis-programas-html-en-local', 'tests-informes-jasper', 'bonificacion-seguridad-social')]
+    [ValidateSet('arranque', 'integration', 'ronda-principal', 'seguridad-de-ronda', 'suite-mis-programas-html-en-local', 'tests-informes-jasper', 'bonificacion-seguridad-social', 'mis-agentes-y-skill-personal')]
     [string]$Profile
 )
 
@@ -169,6 +169,10 @@ function Start-BonificacionSeguridadSocial {
     Start-ShellLauncher -LauncherName 'start-bonificacion-seguridad-social.sh'
 }
 
+function Start-MisAgentesYSkillPersonal {
+    Start-ShellLauncher -LauncherName 'start-mis-agentes-y-skill-personal.sh'
+}
+
 function Start-SeguridadDeRonda {
     Start-ShellLauncher -LauncherName 'start-seguridad-de-ronda.sh'
 }
@@ -186,6 +190,7 @@ function Show-ProfileMenu {
     Write-Host '5. Suite mis programas HTML en local'
     Write-Host '6. Tests informes Jasper'
     Write-Host '7. Bonificacion Seguridad Social'
+    Write-Host '8. Mis agentes y skill personal'
     Write-Host '0. Salir'
     Write-Host ''
 
@@ -197,8 +202,9 @@ function Show-ProfileMenu {
         '5' { return 'suite-mis-programas-html-en-local' }
         '6' { return 'tests-informes-jasper' }
         '7' { return 'bonificacion-seguridad-social' }
+        '8' { return 'mis-agentes-y-skill-personal' }
         '0' { return $null }
-        default { throw 'Seleccion no valida. Use 0, 1, 2, 3, 4, 5, 6 o 7.' }
+        default { throw 'Seleccion no valida. Use 0, 1, 2, 3, 4, 5, 6, 7 o 8.' }
     }
 }
 
@@ -215,6 +221,7 @@ try {
         'suite-mis-programas-html-en-local' { Start-SuiteMisProgramas }
         'tests-informes-jasper' { Start-TestsInformesJasper }
         'bonificacion-seguridad-social' { Start-BonificacionSeguridadSocial }
+        'mis-agentes-y-skill-personal' { Start-MisAgentesYSkillPersonal }
         $null { }
     }
 }
