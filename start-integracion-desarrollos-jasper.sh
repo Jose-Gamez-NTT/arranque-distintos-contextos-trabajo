@@ -11,5 +11,5 @@ code --new-window .
 cd "/c/dev/modernizacion/Asisa/informesJasper/Implantaciones/documentacion/DocumentacionInterna"
 code --new-window .
 
-cd "/c/dev/modernizacion/Asisa/informesJasper/Implantaciones/polizas/Polizas"
+cd "/c/dev/modernizacion/Asisa/informesJasper/Implantaciones/Tabla maestra/KM"
 code --new-window .
